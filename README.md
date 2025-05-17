@@ -28,7 +28,7 @@ An AI-powered workflow analysis and optimization platform that transforms comple
 - **Backend**: Node.js, Express
 - **Database**: PostgreSQL with Drizzle ORM
 - **AI**: Anthropic Claude 3.7 Sonnet
-- **Authentication**: Simple company + email authentication
+- **Authentication**: Simple company and email login (no passwords)
 
 ## 🚀 Getting Started
 
