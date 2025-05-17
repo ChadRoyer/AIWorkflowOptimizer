@@ -144,7 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const messages = await storage.getMessagesByChatId(chatId);
         const userMessages = messages.filter(m => m.role === 'user');
         
-        if (userMessages.length >= 3 && !chat.title) {
+        if (userMessages.length >= 3 && chat.title === 'New Workflow') {
           // Generate and update the title (wait for it to complete)
           try {
             console.log(`Generating title for chat ${chatId} after ${userMessages.length} user messages`);
