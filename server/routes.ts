@@ -5,6 +5,7 @@ import { Claude } from "./claude";
 import { DebugTools } from "./debug";
 import { z } from "zod";
 import { loginSchema } from "@shared/schema";
+import { DEFAULT_CHAT_TITLE } from "@shared/constants";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes prefix
@@ -144,7 +145,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const messages = await storage.getMessagesByChatId(chatId);
         const userMessages = messages.filter(m => m.role === 'user');
         
-        if (userMessages.length >= 3 && !chat.title) {
+        if (userMessages.length >= 3 && chat.title === DEFAULT_CHAT_TITLE) {
           // Generate and update the title (wait for it to complete)
           try {
             console.log(`Generating title for chat ${chatId} after ${userMessages.length} user messages`);
@@ -153,7 +154,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             
             // Get updated chat with new title
             const updatedChat = await storage.getChatById(chatId);
-            if (updatedChat && updatedChat.title !== 'New Workflow') {
+            if (updatedChat && updatedChat.title !== DEFAULT_CHAT_TITLE) {
               console.log(`Successfully updated chat title to "${updatedChat.title}"`);
             } else {
               console.warn(`Failed to update chat title, still using default or unchanged`);
