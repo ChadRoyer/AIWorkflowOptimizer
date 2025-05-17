@@ -63,15 +63,12 @@ The application uses a context-based state management pattern with two main cont
 The backend is built using Node.js with Express and provides a RESTful API. Key components include:
 
 - **Express**: Web framework for handling HTTP requests
-- **Passport.js**: Authentication middleware
-- **Connect-PG-Simple**: Session store using PostgreSQL
 - **Anthropic API**: Integration with Claude AI for workflow analysis
 
 The backend is organized into the following structure:
 
 - `server/index.ts`: Entry point and server initialization
 - `server/routes.ts`: API route definitions
-- `server/auth.ts`: Authentication logic
 - `server/claude.ts`: Integration with Anthropic's Claude AI
 - `server/storage.ts`: Data access layer for database operations
 - `server/websearch.ts`: Web search functionality for AI assistance
